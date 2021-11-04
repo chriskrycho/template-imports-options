@@ -1,0 +1,18 @@
+<script>
+  import Greeting from './greeting.js';
+  import WeatherSummary from './weather-summary.js';
+
+  function isBirthday(dateOfBirth) {
+    const now = new Date();
+    return (
+      now.getDate() === dateOfBirth.getDate() &&
+      now.getMonth() === dateOfBirth.getMonth()
+    );
+  }
+</script>
+
+<Greeting @name={{@user.name}} />
+{{#if (isBirthday @user.dob)}}
+  <p>Happy birthday!</p>
+{{/if}}
+<WeatherSummary />

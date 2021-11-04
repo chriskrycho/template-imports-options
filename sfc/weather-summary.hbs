@@ -1,0 +1,28 @@
+<script>
+  // YEP
+  export function whatever() {}
+
+  // NOPE
+  export class SomeOtherComponent {}
+
+  export default class WeatherSummary extends Component {
+    @tracked currentTemp;
+
+    interval;
+
+    getCurrentTemp = () => {
+      this.currentTemp = Math.random() * 100;
+    };
+
+    constructor(owner, args) {
+      super(owner, args);
+      this.interval = setInterval(this.getCurrentTemp, 10_000);
+    }
+
+    willDestroy() {
+      clearInterval(this.interval);
+    }
+  }
+</script>
+
+<p>The temperature is {{this.currentTemp}}</p>
